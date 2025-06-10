@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <rect width="256" height="256" rx="40" fill="url(#paint0_linear_1_2)"/>
+  
+  <!-- Letter W Design -->
+  <path d="M128 64L96 128L80 96L64 128L32 64H48L64 102.4L80 70.4L96 102.4L112 64H128Z" fill="white"/>
+  <path d="M128 64L160 128L176 96L192 128L224 64H208L192 102.4L176 70.4L160 102.4L144 64H128Z" fill="white"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="64" cy="64" r="8" fill="#60A5FA"/>
+  <circle cx="192" cy="64" r="8" fill="#A78BFA"/>
+  <circle cx="128" cy="192" r="16" fill="#F472B6"/>
+  
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="0" y1="0" x2="256" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+</svg>
