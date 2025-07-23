@@ -4,37 +4,37 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
-      title: 'AI Resume Builder',
-      description: 'An intelligent resume builder that uses AI to optimize and tailor your resume for specific job applications. Features include ATS optimization, content suggestions, and professional templates.',
-      image: '/projectpics/airesume.png',
-      technologies: ['React', 'Node.js', 'OpenAI API', 'MongoDB', 'Tailwind CSS'],
+      title: 'Personal Portfolio Website',
+      description: 'A responsive personal portfolio to showcase my skills, projects, and contact information.',
+      image: '/projectpics/portfolio.png',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'React'],
       type: 'Web Application',
       icon: <Globe className="text-electric-blue" size={20} />,
       demoUrl: '#',
       githubUrl: '#'
     },
     {
-      title: 'AI Stockwise',
-      description: 'AI-powered stock market analysis tool that provides predictive insights, trend analysis, and personalized stock recommendations using machine learning algorithms.',
-      image: '/projectpics/aistockwise.png',
-      technologies: ['Python', 'TensorFlow', 'React', 'FastAPI', 'Pandas'],
-      type: 'Web Application',
+      title: 'To-Do List App',
+      description: 'A simple to-do list app where users can add, delete, and mark tasks as completed.',
+      image: '/projectpics/todo.png',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+      type: 'Web App',
       icon: <Code className="text-electric-pink" size={20} />,
       demoUrl: '#',
       githubUrl: '#'
     },
     {
-      title: 'Novatech',
-      description: 'A modern e-commerce platform for tech gadgets, offering a wide range of electronics, computers, and accessories with secure checkout and user reviews.',
-      image: '/projectpics/technov.png',
-      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Stripe'],
-      type: 'E-commerce Website',
+      title: 'Weather Checker',
+      description: 'A basic weather app that fetches and displays current weather information by city using a public API.',
+      image: '/projectpics/weather.jpg',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'OpenWeatherMap API'],
+      type: 'Web Application',
       icon: <Globe className="text-electric-purple" size={20} />,
       demoUrl: '#',
       githubUrl: '#'
     }
   ];
-
+  
   return (
     <section id="projects" className="min-h-screen flex items-center justify-center px-4 pt-16">
       <div className="max-w-7xl mx-auto">
@@ -88,10 +88,10 @@ const Projects = () => {
                 <div className="flex gap-4">
                   <a 
                     href={project.title === 'AI Resume Builder' 
-                      ? "https://ai-resume-builder-one-iota.vercel.app/"
+                      ? "https://ai-resume-builder-one-iotna.vercel.app/"
                       : project.title === 'AI Stockwise'
-                      ? "https://ai-stock-management.vercel.app"
-                      : "https://nova-tech-ecommerce.vercel.app"
+                      ? "https://ai-stock-managemenmt.vercel.app"
+                      : "https://nova-tech-ecommnerce.vercel.app"
                     }
                     target="_blank" 
                     rel="noopener noreferrer"
@@ -101,10 +101,10 @@ const Projects = () => {
                   </a>
                   <a 
                     href={project.title === 'AI Resume Builder' 
-                      ? "https://github.com/waynepopi/ai-resume-builder"
+                      ? "https://github.com/waynepopie/ai-resume-builder"
                       : project.title === 'AI Stockwise'
-                      ? "https://github.com/waynepopi/ai-stock-management"
-                      : "https://github.com/waynepopi/nova-tech-ecommerce"
+                      ? "https://github.com/waynepopie/ai-stock-management"
+                      : "https://github.com/waynepopie/nova-tech-ecommerce"
                     }
                     target="_blank" 
                     rel="noopener noreferrer"
