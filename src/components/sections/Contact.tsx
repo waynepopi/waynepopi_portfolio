@@ -3,8 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,6 +18,16 @@ const Contact = () => {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
+    toast({
+      title: "Message sent!",
+      description: "I will get back to you soon.",
+    });
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,7 +54,7 @@ const Contact = () => {
       icon: <MapPin className="text-electric-pink" size={24} />,
       label: 'Location',
       value: 'Zimbabwe',
-      href: '#'
+      href: 'https://www.google.com/maps/place/Zimbabwe'
     }
   ];
 

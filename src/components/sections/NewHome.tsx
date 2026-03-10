@@ -114,7 +114,7 @@ const NewHome: React.FC = () => {
                 Contact Me
               </a>
               <a 
-                href="/waynepopi_resume.pdf" 
+                href="/resume/waynepopi_resume.pdf" 
                 download
                 className="px-8 py-4 bg-slate-800 text-white font-semibold rounded-lg hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2"
               >
@@ -244,7 +244,7 @@ const NewHome: React.FC = () => {
               <div className="relative bg-slate-900/80 backdrop-blur-sm rounded-full p-[2px]">
                 <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-slate-800 to-slate-900/90 rounded-full border border-slate-700/50 overflow-hidden shadow-2xl group">
                   <img 
-                    src="/Screenshots/profile.jpg" 
+                    src="/screenshots/profile.jpg" 
                     alt="Wayne Popi" 
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                     style={{ objectPosition: 'center 15%' }}

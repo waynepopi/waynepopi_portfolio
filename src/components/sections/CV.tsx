@@ -5,40 +5,27 @@ import { Button } from '@/components/ui/button';
 const CV = () => {
   const experiences = [
     {
-      title: 'Senior Software Engineer',
-      company: 'Tech Solutions Inc.',
-      period: '2022 - Present',
-      description: 'Lead full-stack development projects, mentor junior developers, and architect scalable solutions.',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS']
+      title: 'Software Systems Assistant',
+      company: 'Civil Legacy',
+      period: 'Present',
+      description: 'Assisting in software systems development and maintenance.',
+      technologies: ['React', 'TypeScript', 'Node.js']
     },
     {
-      title: 'Full Stack Developer',
-      company: 'Digital Agency Ltd.',
-      period: '2021 - 2022',
-      description: 'Developed and maintained multiple client projects, improved application performance by 40%.',
-      technologies: ['Vue.js', 'Express.js', 'MongoDB', 'Docker']
-    },
-    {
-      title: 'Frontend Developer',
-      company: 'StartupXYZ',
-      period: '2020 - 2021',
-      description: 'Built responsive web applications, collaborated with UX/UI designers to implement pixel-perfect designs.',
-      technologies: ['React', 'TypeScript', 'Sass', 'Jest']
+      title: 'Software Systems Assistant',
+      company: 'GreyBox Gaming',
+      period: '2024',
+      description: 'Worked on gaming software systems and platform improvements.',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS']
     }
   ];
 
   const education = [
     {
-      degree: 'Bachelor of Computer Science',
-      institution: 'University of Technology',
-      period: '2017 - 2020',
-      description: 'Specialized in Software Engineering and Database Systems. Graduated with First Class Honors.'
-    },
-    {
-      degree: 'Advanced Certificate in Web Development',
-      institution: 'Code Institute',
-      period: '2019',
-      description: 'Comprehensive program covering modern web technologies and best practices.'
+      degree: 'Software Engineering',
+      institution: 'Bindura University of Science Education',
+      period: '2024 - 2027',
+      description: 'Pursuing a degree in Software Engineering with a focus on modern software development practices.'
     }
   ];
 
@@ -61,10 +48,12 @@ const CV = () => {
           
           {/* CV Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="px-8 py-3 bg-gradient-to-r from-electric-blue to-electric-purple hover:from-electric-blue/80 hover:to-electric-purple/80 text-white font-semibold">
-              <Download size={20} className="mr-2" />
-              Download CV
-            </Button>
+            <a href="/resume/waynepopi_resume.pdf" download className="inline-block">
+              <Button className="px-8 py-3 bg-gradient-to-r from-electric-blue to-electric-purple hover:from-electric-blue/80 hover:to-electric-purple/80 text-white font-semibold">
+                <Download size={20} className="mr-2" />
+                Download CV
+              </Button>
+            </a>
             <Button 
               variant="outline"
               className="px-8 py-3 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-white"

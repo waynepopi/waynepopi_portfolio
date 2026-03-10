@@ -87,12 +87,7 @@ const Projects = () => {
                 <p className="text-gray-400 text-sm mb-5 mt-2 flex-1">{project.description}</p>
                 <div className="flex gap-4">
                   <a 
-                    href={project.title === 'AI Resume Builder' 
-                      ? "https://ai-resume-builder-one-iotna.vercel.app/"
-                      : project.title === 'AI Stockwise'
-                      ? "https://ai-stock-managemenmt.vercel.app"
-                      : "https://nova-tech-ecommnerce.vercel.app"
-                    }
+                    href={project.demoUrl}
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-gradient-to-r from-electric-blue to-electric-purple text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-electric-blue/20 hover:-translate-y-0.5 transition-all duration-300"
@@ -100,12 +95,7 @@ const Projects = () => {
                     View Live Demo
                   </a>
                   <a 
-                    href={project.title === 'AI Resume Builder' 
-                      ? "https://github.com/waynepopie/ai-resume-builder"
-                      : project.title === 'AI Stockwise'
-                      ? "https://github.com/waynepopie/ai-stock-management"
-                      : "https://github.com/waynepopie/nova-tech-ecommerce"
-                    }
+                    href={project.githubUrl}
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="px-4 py-2 border-2 border-electric-blue text-electric-blue font-semibold rounded-lg hover:bg-electric-blue/10 hover:text-white transition-all duration-300"

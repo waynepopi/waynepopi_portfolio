@@ -1,0 +1,26 @@
+Please refactor my portfolio project by fixing the following routing bugs, updating placeholder content, and cleaning up the codebase:
+
+1. Refactor `src/components/sections/Projects.tsx`:
+   - Update the `projects` array objects to directly include `demoUrl` and `githubUrl` properties. Assign them placeholder URLs for now (e.g., '#').
+   - In the JSX, remove the broken ternary logic for the `href` attributes (which currently checks for 'AI Resume Builder', etc.). Replace them to simply use `{project.demoUrl}` and `{project.githubUrl}`.
+
+2. Fix Resume Links in `src/components/sections/NewHome.tsx`:
+   - Find all "Download CV" button links pointing to `href="/waynepopi_resume.pdf"`.
+   - Update them to point to the correct path: `href="/resume/waynepopi_resume.pdf"`.
+
+3. Fix Linux Case-Sensitivity & File Cleanup:
+   - Rename the folder `public/Screenshots` to `public/screenshots` (lowercase).
+   - Update the image path in `src/components/sections/NewHome.tsx` from `/Screenshots/profile.jpg` to `/screenshots/profile.jpg`.
+   - Delete the unused files: `src/components/sections/Home.tsx` and `src/components/Navigation.tsx`.
+
+4. Update Dummy Data in `src/components/sections/CV.tsx`:
+   - Replace the placeholder `experiences` array with my real experience: 
+     1. Software Systems Assistant at Civil Legacy (Present).
+     2. Software Systems Assistant at GreyBox Gaming (2024).
+   - Replace the placeholder `education` array with: Software Engineering at Bindura University of Science Education (2024 - 2027).
+   - Make the "Download CV" button functional by wrapping it in an `<a href="/resume/waynepopi_resume.pdf" download>` tag.
+
+5. Improve Contact Form in `src/components/sections/Contact.tsx`:
+   - Import `useToast` from `@/hooks/use-toast`.
+   - Update the `handleSubmit` function to trigger a success toast (e.g., `toast({ title: "Message sent!", description: "I will get back to you soon." })`) and clear the form data.
+   - Update the Location link in the `contactInfo` array to point to a Google Maps URL for Zimbabwe instead of `#`.
