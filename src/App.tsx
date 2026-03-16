@@ -220,7 +220,7 @@ const App: React.FC = () => {
     e.preventDefault();
     setSending(true);
     const text = encodeURIComponent(
-      `Hello Wayne,\n\nMy name is ${formData.name} and I came across your portfolio. You can reach me back at ${formData.email}.\n\n${formData.message}\n\nLooking forward to connecting!`
+      `Hello Wayne,\n\nMy name is ${formData.name} and I came across your portfolio. You can reach me back at ${formData.email}.\n\n${formData.message}`
     );
     window.open(`https://wa.me/263785859500?text=${text}`, '_blank');
     setTimeout(() => {
