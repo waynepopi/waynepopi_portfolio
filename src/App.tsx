@@ -111,39 +111,49 @@ const CircuitBackground: React.FC = () => (
 
 // ─── Tech Orbit Component ─────────────────────────────────────────────────────
 const TechOrbit: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="relative flex items-center justify-center">
+  <div className="relative flex items-center justify-center w-full h-full">
+    {/* Outer dashed ring */}
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
-      className="absolute w-[340px] h-[340px] rounded-full border border-[#00D4FF]/20 border-dashed"
+      className="absolute rounded-full border border-[#00D4FF]/20 border-dashed"
+      style={{ width: '108%', height: '108%' }}
     />
+    {/* Middle dashed ring */}
     <motion.div
       animate={{ rotate: -360 }}
       transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-      className="absolute w-[280px] h-[280px] rounded-full border border-[#8B5CF6]/20 border-dashed"
+      className="absolute rounded-full border border-[#8B5CF6]/20 border-dashed"
+      style={{ width: '90%', height: '90%' }}
     />
+    {/* Inner spinning arc */}
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-      className="absolute w-[220px] h-[220px] rounded-full"
-      style={{ border: '1.5px solid transparent', borderTopColor: '#00D4FF', borderRightColor: '#8B5CF6' }}
+      className="absolute rounded-full"
+      style={{ width: '112%', height: '112%', border: '1.5px solid transparent', borderTopColor: '#00D4FF', borderRightColor: '#8B5CF6' }}
     />
-    {/* Orbit Dots */}
+    {/* Orbit dots — positioned at the outer arc */}
     {[0, 90, 180, 270].map((deg, i) => (
       <motion.div
         key={i}
         animate={{ rotate: 360 }}
         transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-        className="absolute w-[220px] h-[220px] rounded-full"
-        style={{ transformOrigin: 'center' }}
+        className="absolute rounded-full"
+        style={{ width: '112%', height: '112%', transformOrigin: 'center' }}
       >
         <div
           className="absolute w-2.5 h-2.5 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]"
-          style={{ top: '0', left: '50%', transform: `translateX(-50%) rotate(${deg}deg)`, transformOrigin: `50% 110px` }}
+          style={{
+            top: '-5px',
+            left: '50%',
+            transformOrigin: `50% calc(56% + 5px)`,
+            transform: `translateX(-50%) rotate(${deg}deg)`,
+          }}
         />
       </motion.div>
     ))}
-    <div className="relative z-10">{children}</div>
+    <div className="relative z-10 w-full h-full">{children}</div>
   </div>
 );
 
@@ -499,21 +509,23 @@ const App: React.FC = () => {
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
-              className="flex justify-center lg:justify-end"
+              className="flex justify-center lg:justify-end items-center"
             >
-              <TechOrbit>
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] blur-2xl opacity-30 scale-110" />
-                  <motion.img
-                    src="/screenshots/profile.jpg"
-                    alt="Wayne Popi"
-                    className="relative z-10 w-56 h-56 sm:w-64 sm:h-64 rounded-full object-cover object-top border-2 border-[#00D4FF]/40 pulse-glow"
-                    style={{ objectPosition: 'center 15%' }}
-                    whileHover={{ scale: 1.04 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  />
-                </div>
-              </TechOrbit>
+              <div className="w-[min(72vw,340px)] sm:w-[min(55vw,400px)] md:w-[min(45vw,440px)] lg:w-[min(42vw,480px)] xl:w-[min(38vw,520px)] aspect-square p-6">
+                <TechOrbit>
+                  <div className="relative w-full h-full">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] blur-2xl opacity-30 scale-110" />
+                    <motion.img
+                      src="/screenshots/profile.jpg"
+                      alt="Wayne Popi"
+                      className="relative z-10 w-full h-full rounded-full object-cover border-2 border-[#00D4FF]/40 pulse-glow"
+                      style={{ objectPosition: 'center 15%' }}
+                      whileHover={{ scale: 1.04 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    />
+                  </div>
+                </TechOrbit>
+              </div>
             </motion.div>
           </div>
 
