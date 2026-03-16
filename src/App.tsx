@@ -220,7 +220,7 @@ const App: React.FC = () => {
     e.preventDefault();
     setSending(true);
     const text = encodeURIComponent(
-      `Hi Wayne! My name is ${formData.name} (${formData.email}).\n\n${formData.message}`
+      `Hello Wayne,\n\nMy name is ${formData.name} and I came across your portfolio. You can reach me back at ${formData.email}.\n\n${formData.message}\n\nLooking forward to connecting!`
     );
     window.open(`https://wa.me/263785859500?text=${text}`, '_blank');
     setTimeout(() => {
@@ -844,7 +844,7 @@ const App: React.FC = () => {
                       <MessageSquare size={20} className="text-green-400" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-white">Send via WhatsApp</h3>
+                      <h3 className="font-bold text-white">Contact Wayne DEV</h3>
                       <p className="text-gray-500 text-xs">Your message will open in WhatsApp</p>
                     </div>
                   </div>
