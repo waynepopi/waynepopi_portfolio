@@ -79,7 +79,11 @@ const SKILL_CATEGORIES: SkillCategory[] = [
 
 // ─── Circuit Animation Component ─────────────────────────────────────────────
 const CircuitBackground: React.FC = () => (
-  <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+  <div
+    className="fixed inset-0 overflow-hidden pointer-events-none z-0"
+    aria-hidden="true"
+    style={{ backfaceVisibility: 'hidden', perspective: '1000px', transform: 'translateZ(0)', willChange: 'transform' }}
+  >
     <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <pattern id="circuit" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
@@ -117,21 +121,21 @@ const TechOrbit: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       animate={{ rotate: 360 }}
       transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
       className="absolute rounded-full border border-[#00D4FF]/20 border-dashed"
-      style={{ width: '108%', height: '108%' }}
+      style={{ width: '108%', height: '108%', willChange: 'transform', backfaceVisibility: 'hidden' }}
     />
     {/* Middle dashed ring */}
     <motion.div
       animate={{ rotate: -360 }}
       transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
       className="absolute rounded-full border border-[#8B5CF6]/20 border-dashed"
-      style={{ width: '90%', height: '90%' }}
+      style={{ width: '90%', height: '90%', willChange: 'transform', backfaceVisibility: 'hidden' }}
     />
     {/* Inner spinning arc */}
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
       className="absolute rounded-full"
-      style={{ width: '112%', height: '112%', border: '1.5px solid transparent', borderTopColor: '#00D4FF', borderRightColor: '#8B5CF6' }}
+      style={{ width: '112%', height: '112%', border: '1.5px solid transparent', borderTopColor: '#00D4FF', borderRightColor: '#8B5CF6', willChange: 'transform', backfaceVisibility: 'hidden' }}
     />
     {/* Orbit dots — positioned at the outer arc */}
     {[0, 90, 180, 270].map((deg, i) => (
@@ -140,7 +144,7 @@ const TechOrbit: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         animate={{ rotate: 360 }}
         transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
         className="absolute rounded-full"
-        style={{ width: '112%', height: '112%', transformOrigin: 'center' }}
+        style={{ width: '112%', height: '112%', transformOrigin: 'center', willChange: 'transform', backfaceVisibility: 'hidden' }}
       >
         <div
           className="absolute w-2.5 h-2.5 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]"
@@ -262,18 +266,24 @@ const App: React.FC = () => {
           background: linear-gradient(90deg, transparent 0%, #00D4FF 50%, transparent 100%);
           opacity: 0;
           animation: circuitFlow 4s ease-in-out infinite;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
+          transform: translateZ(0);
         }
         @keyframes circuitFlow {
-          0% { opacity: 0; transform: scaleX(0) translateX(-100%); }
+          0% { opacity: 0; transform: translateZ(0) scaleX(0) translateX(-100%); }
           30% { opacity: 0.4; }
           70% { opacity: 0.4; }
-          100% { opacity: 0; transform: scaleX(1) translateX(100%); }
+          100% { opacity: 0; transform: translateZ(0) scaleX(1) translateX(100%); }
         }
         .circuit-vertical {
           width: 1px;
           background: linear-gradient(180deg, transparent 0%, #8B5CF6 50%, transparent 100%);
           opacity: 0;
           animation: circuitFlowV 5s ease-in-out infinite;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
+          transform: translateZ(0);
         }
         @keyframes circuitFlowV {
           0% { opacity: 0; height: 0; top: 0; }
@@ -281,33 +291,51 @@ const App: React.FC = () => {
           100% { opacity: 0; height: 0; top: 100%; }
         }
 
+        /* Reduce animation frequency on mobile to save CPU */
+        @media (max-width: 767px) {
+          .circuit-line { animation-duration: 6s; }
+          .circuit-vertical { animation-duration: 8s; }
+          .pulse-glow { animation-duration: 3s; }
+          .float { animation-duration: 5s; }
+        }
+
         .card-hover {
           transition: transform 0.3s ease, box-shadow 0.3s ease;
+          will-change: transform;
         }
         .card-hover:hover {
-          transform: translateY(-4px);
+          transform: translateY(-4px) translateZ(0);
           box-shadow: 0 20px 60px rgba(0, 212, 255, 0.12);
         }
 
         .glass {
           background: rgba(2, 6, 23, 0.85);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          backface-visibility: hidden;
+          perspective: 1000px;
         }
 
         .font-mono { font-family: 'JetBrains Mono', monospace; }
 
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
+          0%, 100% { transform: translateY(0px) translateZ(0); }
+          50% { transform: translateY(-8px) translateZ(0); }
         }
-        .float { animation: float 3s ease-in-out infinite; }
+        .float {
+          animation: float 3s ease-in-out infinite;
+          will-change: transform;
+          backface-visibility: hidden;
+        }
         
         @keyframes pulse-glow {
           0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.4); }
           50% { box-shadow: 0 0 24px rgba(0, 212, 255, 0.8); }
         }
-        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        .pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+          will-change: box-shadow;
+        }
       `}</style>
 
       <Toaster />
@@ -518,6 +546,8 @@ const App: React.FC = () => {
                     <motion.img
                       src="/screenshots/profile.jpg"
                       alt="Wayne Popi"
+                      loading="eager"
+                      decoding="async"
                       className="relative z-10 w-full h-full rounded-full object-cover border-2 border-[#00D4FF]/40 pulse-glow"
                       style={{ objectPosition: 'center 15%' }}
                       whileHover={{ scale: 1.04 }}
@@ -737,6 +767,8 @@ const App: React.FC = () => {
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-600"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80" />
