@@ -318,7 +318,7 @@ const App: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             className="text-xl font-bold gradient-text font-mono"
           >
-            WP/
+            WP
           </motion.button>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -367,7 +367,7 @@ const App: React.FC = () => {
             <CircuitBackground />
             <div className="relative z-10 flex flex-col h-full p-6">
               <div className="flex items-center justify-between mb-12">
-                <span className="text-xl font-bold gradient-text font-mono">WP/</span>
+                <span className="text-xl font-bold gradient-text font-mono">WP</span>
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setMenuOpen(false)}
@@ -913,7 +913,7 @@ const App: React.FC = () => {
       {/* ── Footer ── */}
       <footer className="border-t border-white/5 py-8 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-600 text-sm">
-          <span className="font-mono gradient-text font-bold">WP/</span>
+          <span className="font-mono gradient-text font-bold">WP</span>
           <span>© {new Date().getFullYear()} Wayne Popi. All rights reserved.</span>
           <div className="flex gap-4">
             {[{ icon: Github, href: 'https://github.com/waynepopi' }, { icon: Linkedin, href: 'https://linkedin.com/in/waynepopi' }, { icon: Mail, href: 'mailto:waynepopy@gmail.com' }].map(s => (
