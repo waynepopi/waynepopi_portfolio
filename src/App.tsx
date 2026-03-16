@@ -781,34 +781,13 @@ const App: React.FC = () => {
                 transition={{ duration: 0.7 }}
                 className="space-y-6"
               >
-                {/* Terminal card */}
-                <div className="bg-white/[0.03] border border-white/5 rounded-2xl overflow-hidden">
-                  <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-                    <span className="font-mono text-xs text-gray-500 ml-2">wayne@portfolio ~ contact</span>
-                  </div>
-                  <div className="p-5 space-y-3 font-mono text-sm">
-                    <div className="text-gray-500">$ <span className="text-[#00D4FF]">whoami</span></div>
-                    <div className="text-gray-300">Wayne Popi — Software Engineer</div>
-                    <div className="mt-2 text-gray-500">$ <span className="text-[#00D4FF]">cat contact.json</span></div>
-                    <div className="text-gray-400 space-y-1 pl-4 border-l border-[#00D4FF]/20">
-                      <div><span className="text-[#8B5CF6]">"email":</span> <span className="text-[#EC4899]">"waynepopy@gmail.com"</span></div>
-                      <div><span className="text-[#8B5CF6]">"phone":</span> <span className="text-[#EC4899]">"+263 78 585 9500"</span></div>
-                      <div><span className="text-[#8B5CF6]">"location":</span> <span className="text-[#EC4899]">"Zimbabwe, Africa"</span></div>
-                      <div><span className="text-[#8B5CF6]">"available":</span> <span className="text-green-400">true</span></div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Contact links */}
                 <div className="space-y-3">
                   {[
-                    { icon: Mail, label: 'Email', value: 'waynepopy@gmail.com', href: 'mailto:waynepopy@gmail.com', color: '#00D4FF' },
-                    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/waynepopi', href: 'https://linkedin.com/in/waynepopi', color: '#8B5CF6' },
-                    { icon: Github, label: 'GitHub', value: 'github.com/waynepopi', href: 'https://github.com/waynepopi', color: '#EC4899' },
-                    { icon: MapPin, label: 'Location', value: 'Zimbabwe, Africa', href: 'https://www.google.com/maps/place/Zimbabwe', color: '#06B6D4' },
+                    { icon: Mail, label: 'Email', value: 'waynepopy@gmail.com', href: 'mailto:waynepopy@gmail.com', color: '#00D4FF', linkAsSubtext: true },
+                    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/waynepopi', href: 'https://linkedin.com/in/waynepopi', color: '#8B5CF6', linkAsSubtext: true },
+                    { icon: Github, label: 'GitHub', value: 'github.com/waynepopi', href: 'https://github.com/waynepopi', color: '#EC4899', linkAsSubtext: true },
+                    { icon: MapPin, label: 'Location', value: 'Zimbabwe, Africa', href: 'https://www.google.com/maps/place/Zimbabwe', color: '#06B6D4', linkAsSubtext: false },
                   ].map(c => (
                     <motion.a
                       key={c.label}
@@ -822,8 +801,17 @@ const App: React.FC = () => {
                         <c.icon size={18} style={{ color: c.color }} />
                       </div>
                       <div>
-                        <div className="text-xs text-gray-500">{c.label}</div>
-                        <div className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{c.value}</div>
+                        {c.linkAsSubtext ? (
+                          <>
+                            <div className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">{c.label}</div>
+                            <div className="text-xs text-gray-500">{c.value}</div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="text-xs text-gray-500">{c.label}</div>
+                            <div className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{c.value}</div>
+                          </>
+                        )}
                       </div>
                       <ArrowRight size={14} className="ml-auto text-gray-600 group-hover:text-[#00D4FF] transition-colors" />
                     </motion.a>
